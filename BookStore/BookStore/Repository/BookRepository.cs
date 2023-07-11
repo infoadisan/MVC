@@ -24,9 +24,9 @@ namespace BookStore.Repository
         {
             return new List<BookModel>()
             {
-                new BookModel(){Id=1, Title = "Science", Author="Yoyo"},
-                new BookModel(){Id=2, Title = "Astro", Author="Astro"},
-                new BookModel(){Id=3, Title = "Maths", Author="YouKNowwho"},
+                new BookModel(){Id=1, Title = "Science", Author="Yoyo", Description="About Science"},
+                new BookModel(){Id=2, Title = "Astro", Author="Astro", Description="About Astronomy"},
+                new BookModel(){Id=3, Title = "Maths", Author="YouKNowwho", Description="About you know who"},
 
             };
         }

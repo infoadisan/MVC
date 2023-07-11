@@ -9,23 +9,24 @@ namespace BookStore.Controllers
         private BookRepository bookRepository;
         public BookController()
         {
-            bookRepository= new BookRepository();
+            bookRepository = new BookRepository();
         }
         public ViewResult GetAllBooks()
         {
-           var data =  bookRepository.GetAllBooks();
-            
+            var data = bookRepository.GetAllBooks();
+
             return View(data);
         }
 
-        public BookModel GetBook(int id)
+        public ViewResult GetBook(int id)
         {
-            return bookRepository.GetBook(id);
+            var data = bookRepository.GetBook(id);
+            return View(data);
         }
 
         public List<BookModel> SearchBooks(string bookName, string authorName)
         {
-            return bookRepository.SearchBook(bookName,authorName);
+            return bookRepository.SearchBook(bookName, authorName);
         }
     }
 }
