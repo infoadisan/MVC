@@ -10,11 +10,18 @@
             <div id="demo" class="carousel slide" data-bs-ride="carousel">
 
                 <!-- Indicators/dots -->
-                <div class="carousel-indicators">
+                <!--using div-->
+                @*<div class="carousel-indicators">
                     <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"></button>
                     <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
                     <button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button>
-                </div>
+                </div>*@
+                <!--using ol-->
+                <ol class="carousel-indicators">
+                    <li data-bs-target="#demo" data-bs-slide-to="0" class="active"></li>
+                    <li data-bs-target="#demo" data-bs-slide-to="1"></li>
+                    <li data-bs-target="#demo" data-bs-slide-to="0"></li>
+                </ol>
 
                 <!-- The slideshow/carousel -->
                 <div class="carousel-inner">
