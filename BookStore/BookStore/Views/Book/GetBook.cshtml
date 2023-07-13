@@ -5,6 +5,17 @@
 }
 @model BookModel
 
+@section breadcrumb {
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            @*<li class="breadcrumb-item"><a href="#">Page 1</a></li>*@
+            <li class="breadcrumb-item" aria-current="page">Get All Books</li>
+            <li class="breadcrumb-item active"><a href="#">Get Book</a></li>
+        </ol>
+    </nav>
+}
+
 <div class="container">
     <div class="row">
         <div class="col-md-6">
@@ -49,7 +60,42 @@
 
         </div>
         <div class="col-md-6">
+            <div class="row">
+                <div class="col-md-12">
+                    <h3>@Model.Title</h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 text-primary">
+                    <span class="label label-primary">By:</span>
+                    <span class="monospaced">@Model.Author</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <p class="description">
+                        @Model.Description
+                    </p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4">
+                    <button class="btn btn-online-primary">
+                        Read Now
+                    </button>
+                </div>
+            </div>
+
+            <hr />
+
+            <ul class="list-group">
+                <li class="list-group-item"><span class="font-weight-bold">Category - </span>@Model.Category</li>
+                <li class="list-group-item"><span class="font-weight-bold">Total Pages - </span>@Model.TotalPages</li>
+                <li class="list-group-item"><span class="font-weight-bold">Language - </span> @Model.Language</li>
+            </ul>
         </div>
+
     </div>
 </div>
 
