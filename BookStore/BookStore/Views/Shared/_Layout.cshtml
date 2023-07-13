@@ -3,8 +3,9 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>@ViewBag.Title</title>
+    <title>@ViewData["Title"] | BookStore</title>
    
+    
     <!--Css libraries-->
     <link href="~/library/bootstrap/css/bootstrap44.min.css" rel="stylesheet" />
     <link href="~/library/datatables/jquery.datatables.min.css" rel="stylesheet" />
@@ -13,16 +14,22 @@
     <!--custom css-->
     <link href="~/css/site.css" rel="stylesheet" />
 
-    <!--Js libraries-->
+    <!--js libraries-->
     <script src="~/library/bootstrap/js/file1_jquery341slim_min.js"></script>
+    @*<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-csxorxvzctkaix6yvo6hppczgetbymgwsflbw8hfcjo=" crossorigin="anonymous"></script>*@
     <script src="~/library/bootstrap/js/file2_popper.min.js"></script>
     <script src="~/library/bootstrap/js/file3_bootstrap441min.js"></script>
+
+    <!--using libman-->
+
+    
 </head>
 <body>
     <header>
 
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container-fluid">
+               
                 <a class="navbar-brand" href="/">
                     <img src="~/images/image2.png" />
                 </a>
@@ -34,6 +41,7 @@
                         <li class="nav-item">
                             <a class="btn btn-outline-primary">Login</a>
                             <a class="btn btn-primary">Register</a>
+                            
                         </li>
                     </ul>
                     <ul class="navbar-nav flex-grow-1">
@@ -67,7 +75,7 @@
 
 </footer>
 
-<script src="~/lib/jquery/jquery.js"></script>
+@*<script src="~/lib/jquery/jquery.js"></script>*@
 @*<script src="~/js/bootrap/file1_popper.min.js"></script>
 <script src="~/js/bootrap/file2_5.3.0_dist_js_bootstrap.min.js"></script>*@
 
