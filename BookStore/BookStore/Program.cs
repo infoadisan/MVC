@@ -13,5 +13,8 @@ var app = builder.Build();
 app.UseStaticFiles();
 //app.MapGet("/", () => "Hello World!");
 app.MapDefaultControllerRoute();
+//app.MapControllerRoute(
+//    name: "Default",
+//    pattern: "bookApp/{controller=Home}/{action=Index}/{Id?}");
 
 app.Run();

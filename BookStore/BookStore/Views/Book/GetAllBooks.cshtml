@@ -3,6 +3,13 @@
 
 @{
     ViewData["title"] = "All Books";
+
+    //var parameters = new Dictionary<string, string>()
+    //{
+    //    {"name", "Sanjeev"},
+    //    {"company","Adisan"},
+    //    {"appName", "BookStore"}
+    //};
 }
 
 @section breadcrumb {
@@ -30,17 +37,17 @@
                     <p class="card-text">@book.Description</p>
                     <div class="d-flex justify-content-between align-items-center">
                         <div class="btn-group">
-                                <a href="getbook/@book.Id" class="btn btn-sm btn-outline-secondary">View Details</a>
+                                <a asp-route="bookDetailsRoute"
+                               asp-route-Id="@book.Id"
+                               
+                                class="btn btn-sm btn-outline-secondary">View Details</a>
                         </div>
                         <small class="text-muted">@book.Author</small>
                     </div>  
                 </div>
             </div>
         </div>
-        }
-
-
-        
+        }        
     </div>
 </div>
    
