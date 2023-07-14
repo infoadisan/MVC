@@ -1,13 +1,64 @@
-﻿using BookStore.Models;
+﻿using BookStore.Data;
+using BookStore.Data.Models;
+using BookStore.Models;
 using System.Linq;
+using System.Data.SqlClient;
 
 namespace BookStore.Repository
 {
-    public class BookRepository
+    public class BookRepository : IBookRepository
     {
+        private readonly BookStoresDbContext context;
+
+        public BookRepository(BookStoresDbContext context)
+        {
+            context = context;
+        }
+
+        public int AddBook(BookModel bookModel)
+        {
+            var book = new Book()
+            {
+                Id = bookModel.Id,
+                Title = bookModel.Title,
+                Author = bookModel.Author,
+                Description = bookModel.Description,
+                TotalPages = bookModel.TotalPages,
+            };
+
+            context.Books.Add(book);
+            context.SaveChanges();
+            return book.Id;
+
+        }
+
+        private BookModel ConvertBooktoBookModel(Book book)
+        {
+            var bookModel = new BookModel()
+            {
+                Id = book.Id,
+                Title = book.Title,
+                Description = book.Description,
+                TotalPages = (int)book.TotalPages,
+                Author = book.Author,
+                Category = book.Category,
+                Language = book.Language
+
+            };
+            return bookModel;
+        }
+
         public List<BookModel> GetAllBooks()
         {
-            return DataSource();
+            var bookmodels = new List<BookModel>();
+            var books = context.Books.ToList();
+            foreach(var book in books)
+            {
+                var bookModel = ConvertBooktoBookModel(book);
+                bookmodels.Add(bookModel);
+            }
+            return bookmodels;
+
         }
 
         public BookModel GetBook(int id)
@@ -17,7 +68,7 @@ namespace BookStore.Repository
 
         public List<BookModel> SearchBook(string title, string authorName)
         {
-            return DataSource().Where(b => b.Title.Contains(title) && b.Author.Contains(authorName)).ToList();   
+            return DataSource().Where(b => b.Title.Contains(title) && b.Author.Contains(authorName)).ToList();
         }
 
         private List<BookModel> DataSource()

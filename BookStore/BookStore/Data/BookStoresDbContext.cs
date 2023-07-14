@@ -6,7 +6,7 @@ using BookStore.Data.Models;
 
 namespace BookStore.Data
 {
-    public partial class BookStoresDbContext : DbContext
+    public partial class BookStoresDbContext : DbContext, IBookStoresDbContext
     {
         public BookStoresDbContext()
         {

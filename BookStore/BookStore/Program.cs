@@ -1,3 +1,7 @@
+using BookStore.Data;
+using BookStore.Repository;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 
@@ -5,7 +9,11 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages().AddRazorRuntimeCompilation();
 #endif
 
+var connectionString = builder.Configuration.GetConnectionString("BookStoreDB");
+builder.Services.AddDbContext<BookStoresDbContext>(options => options.UseSqlServer(connectionString));
 
+builder.Services.AddScoped<BookStoresDbContext, BookStoresDbContext>();
+builder.Services.AddScoped<IBookRepository, BookRepository>();
 
 var app = builder.Build();
 

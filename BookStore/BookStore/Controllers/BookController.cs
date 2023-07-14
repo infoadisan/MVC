@@ -1,4 +1,5 @@
-﻿using BookStore.Models;
+﻿using BookStore.Data;
+using BookStore.Models;
 using BookStore.Repository;
 using Microsoft.AspNetCore.Mvc;
 
@@ -6,14 +7,17 @@ namespace BookStore.Controllers
 {
     public class BookController : Controller
     {
-        private BookRepository bookRepository;
-        public BookController()
+        private readonly BookStoresDbContext context;
+
+        //private BookRepository bookRepository;
+
+        public BookController(BookStoresDbContext context)
         {
-            bookRepository = new BookRepository();
+            this.context = context;
         }
         public ViewResult GetAllBooks()
         {
-            var data = bookRepository.GetAllBooks();
+            var data = context.Books.ToList();
 
             return View(data);
         }
@@ -21,25 +25,26 @@ namespace BookStore.Controllers
         [Route("book-details/{id}", Name ="bookDetailsRoute")]
         public ViewResult GetBook(int id)
         {
-            var data = bookRepository.GetBook(id);
-            return View(data);
-        }
-
-        public List<BookModel> SearchBooks(string bookName, string authorName)
-        {
-            return bookRepository.SearchBook(bookName, authorName);
-        }
-
-        public ViewResult AddNewBook()
-        {
+            //var data = bookRepository.GetBook(id);
             return View();
         }
 
-        [HttpPost(Name ="AddNewBookRoute")]
-        public ViewResult AddNewBook(BookModel bookModel)
-        {
-            return View();
-        }
+        //public List<BookModel> SearchBooks(string bookName, string authorName)
+        //{
+        //    return bookRepository.SearchBook(bookName, authorName);
+        //}
+
+        //public ViewResult AddNewBook()
+        //{
+        //    return View();
+        //}
+
+        //[HttpPost(Name ="AddNewBookRoute")]
+        //public ViewResult AddNewBook(BookModel bookModel)
+        //{
+        //    bookRepository.AddBook(bookModel);
+        //    return View();
+        //}
 
 
     }
